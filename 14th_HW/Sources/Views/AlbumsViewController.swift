@@ -152,18 +152,6 @@ extension AlbumsViewController: UICollectionViewDataSource {
             let albumCell = collectionView.dequeueReusableCell(withReuseIdentifier: AlbumCollectionViewCell.identifier, for: indexPath) as? AlbumCollectionViewCell
             albumCell?.fillCell(from: itemData[indexPath.section][indexPath.row])
             return albumCell ?? UICollectionViewCell()
-        case 1:
-            let peopleCell = collectionView.dequeueReusableCell(withReuseIdentifier: PeopleCollectionViewCell.identifier, for: indexPath) as? PeopleCollectionViewCell
-            peopleCell?.fillCell(from: itemData[indexPath.section][indexPath.row])
-            return peopleCell ?? UICollectionViewCell()
-        case 2:
-            let mediaCell = collectionView.dequeueReusableCell(withReuseIdentifier: MediaTypeCollectionViewCell.identifier, for: indexPath) as? MediaTypeCollectionViewCell
-            mediaCell?.fillCell(from: itemData[indexPath.section][indexPath.row])
-            return mediaCell ?? UICollectionViewCell()
-        case 3:
-            let utilityCell = collectionView.dequeueReusableCell(withReuseIdentifier: UtilityCollectionViewCell.identifier, for: indexPath) as? UtilityCollectionViewCell
-            utilityCell?.fillCell(from: itemData[indexPath.section][indexPath.row])
-            return utilityCell ?? UICollectionViewCell()
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AlbumCollectionViewCell.identifier, for: indexPath)
             cell.backgroundColor = .gray
@@ -176,10 +164,6 @@ extension AlbumsViewController: UICollectionViewDataSource {
         case 0:
             let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: AlbumHeader.identifier, for: indexPath) as? AlbumHeader
             header?.title.text = "My Albums"
-            return header ?? UICollectionReusableView()
-        case 1:
-            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: AlbumHeader.identifier, for: indexPath) as? AlbumHeader
-            header?.title.text = "People"
             return header ?? UICollectionReusableView()
         default:
             let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "header", for: indexPath)
