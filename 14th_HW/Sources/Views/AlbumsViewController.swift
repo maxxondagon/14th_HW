@@ -11,6 +11,7 @@ class AlbumsViewController: UIViewController {
         let layout = createLayout()
         let collecion = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collecion.register(AlbumCollectionViewCell.self, forCellWithReuseIdentifier: AlbumCollectionViewCell.identifier)
+        collecion.register(AlbumHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: AlbumHeader.identifier)
         collecion.delegate = self
         collecion.dataSource = self
         return collecion
@@ -27,16 +28,16 @@ class AlbumsViewController: UIViewController {
     
     // MARK: - Setup
     
-    func setupView() {
+   private func setupView() {
         title = "Albums"
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     
-    func setupHierarchy() {
+    private func setupHierarchy() {
         view.addSubview(collectionView)
     }
     
-    func setupLayout() {
+    private func setupLayout() {
         collectionView.snp.makeConstraints { make in
             make.top.right.bottom.left.equalTo(view)
         }
@@ -79,36 +80,6 @@ class AlbumsViewController: UIViewController {
                                                                 bottom: 0,
                                                                 trailing: 0)
                 return sectionLayout
-                
-                // People
-            case 1:
-                let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
-                let layoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
-                
-                let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(400), heightDimension: .absolute(200))
-                let layoutGroup = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: layoutItem, count: 2)
-                layoutGroup.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 2.5, bottom: 0, trailing: 2.5)
-                layoutGroup.interItemSpacing = NSCollectionLayoutSpacing.fixed(5)
-                
-                let sectionLayout = NSCollectionLayoutSection(group: layoutGroup)
-                sectionLayout.orthogonalScrollingBehavior = .groupPagingCentered
-                
-                let layoutSectionHeaderSize = NSCollectionLayoutSize(
-                    widthDimension: .fractionalWidth(0.93),
-                    heightDimension: .estimated(80)
-                )
-                let layoutSectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
-                    layoutSize: layoutSectionHeaderSize,
-                    elementKind: UICollectionView.elementKindSectionHeader,
-                    alignment: .top
-                )
-                sectionLayout.boundarySupplementaryItems = [layoutSectionHeader]
-                sectionLayout.contentInsets = NSDirectionalEdgeInsets(top: 0,
-                                                                leading: 15,
-                                                                bottom: 5,
-                                                                trailing: 0)
-                return sectionLayout
-   
             default:
                 let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
                 let layoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
@@ -176,6 +147,7 @@ extension AlbumsViewController: UICollectionViewDataSource {
 
 extension AlbumsViewController: UICollectionViewDelegate {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        itemData.count
+//        itemData.count
+        1
     }
 }
