@@ -54,17 +54,26 @@ class AlbumsViewController: UIViewController {
             case 0:
                 let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
                 let layoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
+                layoutItem.contentInsets = NSDirectionalEdgeInsets(top: 0,
+                                                                   leading: 5,
+                                                                   bottom: 0,
+                                                                   trailing: 0)
                 
-                let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(225), heightDimension: .absolute(450))
+                let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .fractionalHeight(0.6))
                 let layoutGroup = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitem: layoutItem, count: 2)
-                layoutGroup.contentInsets = NSDirectionalEdgeInsets(top: 0,
-                                                                    leading: 10,
-                                                                    bottom: 0,
-                                                                    trailing: 10)
                 layoutGroup.interItemSpacing = NSCollectionLayoutSpacing.fixed(10)
-                let sectionLayout = NSCollectionLayoutSection(group: layoutGroup)
-                sectionLayout.orthogonalScrollingBehavior = .paging
+                layoutGroup.contentInsets = NSDirectionalEdgeInsets(top: 0,
+                                                                    leading: 5,
+                                                                    bottom: 0,
+                                                                    trailing: 0)
                 
+                let sectionLayout = NSCollectionLayoutSection(group: layoutGroup)
+                sectionLayout.contentInsets = NSDirectionalEdgeInsets(top: 0,
+                                                                      leading: 0,
+                                                                      bottom: 0,
+                                                                      trailing: 5)
+                sectionLayout.orthogonalScrollingBehavior = .paging
+    
                 let layoutSectionHeaderSize = NSCollectionLayoutSize(
                     widthDimension: .fractionalWidth(1),
                     heightDimension: .estimated(60)
@@ -75,10 +84,6 @@ class AlbumsViewController: UIViewController {
                     alignment: .top
                 )
                 sectionLayout.boundarySupplementaryItems = [layoutSectionHeader]
-                sectionLayout.contentInsets = NSDirectionalEdgeInsets(top: 0,
-                                                                leading: 10,
-                                                                bottom: 0,
-                                                                trailing: 0)
                 return sectionLayout
             default:
                 let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
@@ -125,7 +130,6 @@ extension AlbumsViewController: UICollectionViewDataSource {
             return albumCell ?? UICollectionViewCell()
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AlbumCollectionViewCell.identifier, for: indexPath)
-            cell.backgroundColor = .gray
             return cell
         }
     }

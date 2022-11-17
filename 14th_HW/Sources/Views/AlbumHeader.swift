@@ -45,11 +45,8 @@ class AlbumHeader: UICollectionReusableView {
     
     func setupLayout() {
         title.snp.makeConstraints { make in
-//            make.center.equalToSuperview()
             make.top.equalToSuperview().offset(10)
-            make.left.equalToSuperview().offset(10)
-//            make.center.equalToSuperview()
-//            make.width.equalToSuperview()
+            make.left.equalToSuperview().offset(15)
         }
         separator.snp.makeConstraints { make in
             make.top.equalToSuperview()

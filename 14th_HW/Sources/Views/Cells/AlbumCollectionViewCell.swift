@@ -30,17 +30,17 @@ class AlbumCollectionViewCell: UICollectionViewCell {
         return count
     }()
     
-    lazy var image: UIImageView = {
+    private lazy var image: UIImageView = {
         let image = UIImageView()
         image.layer.masksToBounds = true
+        image.contentMode = .scaleAspectFill
         image.layer.cornerRadius = 5
-        image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-//        contentView.backgroundColor = .blue
+//        contentView.backgroundColor = .systemGray3
         setupHierarchy()
         setupLayout()
     }
@@ -58,20 +58,20 @@ class AlbumCollectionViewCell: UICollectionViewCell {
     
     func setupLayout() {
         title.snp.makeConstraints { make in
-            make.left.equalToSuperview()
-            make.top.equalTo(image.snp.bottom).offset(5)
+            make.left.equalTo(image.snp.left)
+            make.top.equalTo(image.snp.bottom).offset(10)
         }
         
         count.snp.makeConstraints { make in
-            make.left.equalToSuperview()
+            make.left.equalTo(image.snp.left)
             make.top.equalTo(title.snp.bottom).offset(5)
         }
         
         image.snp.makeConstraints { make in
-//            make.center.equalToSuperview()
             make.top.equalTo(contentView)
-            make.height.equalTo(contentView).offset(-60)
-            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(contentView).offset(-70)
+            make.width.equalTo(image.snp.height)
+            make.left.equalToSuperview()
             make.bottom.equalToSuperview().offset(-60)
         }
     }
