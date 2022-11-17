@@ -30,8 +30,8 @@ extension CollectionModel {
              CollectionModel(title: "InShot", image: UIImage(named: "image-9"))],
             
             // People & Places
-            [CollectionModel(title: "People", image: UIImage(systemName: "seal")),
-             CollectionModel(title: "Places", image: UIImage(systemName: "key"))],
+            [CollectionModel(title: "People", image: UIImage(named: "people")),
+             CollectionModel(title: "Places", image: UIImage(named: "places"))],
             
             // Media Types
             [CollectionModel(title: "Videos", icon: UIImage(systemName: "house")),

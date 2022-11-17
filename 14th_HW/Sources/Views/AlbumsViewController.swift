@@ -106,10 +106,10 @@ class AlbumsViewController: UIViewController {
                 
                 let sectionLayout = NSCollectionLayoutSection(group: layoutGroup)
                 sectionLayout.contentInsets = NSDirectionalEdgeInsets(top: 0,
-                                                                      leading: 0,
+                                                                      leading: 10,
                                                                       bottom: 0,
                                                                       trailing: 0)
-                sectionLayout.orthogonalScrollingBehavior = .paging
+                sectionLayout.orthogonalScrollingBehavior = .continuous
     
                 let layoutSectionHeaderSize = NSCollectionLayoutSize(
                     widthDimension: .fractionalWidth(1),

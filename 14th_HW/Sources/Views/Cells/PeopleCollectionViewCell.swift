@@ -14,15 +14,16 @@ class PeopleCollectionViewCell: UICollectionViewCell {
     
     func fillCell(from instance: CollectionModel) {
         self.cellData = instance
-        image1.image = cellData?.image
+        image.image = cellData?.image
     }
     
     // MARK: - Elements
     
-    private lazy var image1: UIImageView = {
+    private lazy var image: UIImageView = {
         let image = UIImageView()
-        image.clipsToBounds = true
-        image.layer.cornerRadius = 10
+        image.layer.masksToBounds = true
+        image.contentMode = .scaleAspectFill
+        image.layer.cornerRadius = 5
         return image
     }()
     
@@ -38,11 +39,11 @@ class PeopleCollectionViewCell: UICollectionViewCell {
     }
     
     private func setupHierarchy() {
-        contentView.addSubview(image1)
+        contentView.addSubview(image)
     }
     
     private func setupView() {
-        image1.snp.makeConstraints { make in
+        image.snp.makeConstraints { make in
             make.top.right.bottom.left.equalToSuperview()
         }
     }
