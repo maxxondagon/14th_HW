@@ -13,6 +13,7 @@ class AlbumCollectionViewCell: UICollectionViewCell {
     static let identifier = "AlbumCell"
     
     private var cellData: CollectionModel?
+    
     func fillCell(from instance: CollectionModel) {
         self.cellData = instance
         title.text = cellData?.title
@@ -40,7 +41,6 @@ class AlbumCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-//        contentView.backgroundColor = .systemGray3
         setupHierarchy()
         setupLayout()
     }
@@ -49,14 +49,14 @@ class AlbumCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupHierarchy() {
+    private func setupHierarchy() {
         addSubview(image)
         addSubview(title)
         addSubview(count)
         
     }
     
-    func setupLayout() {
+    private func setupLayout() {
         title.snp.makeConstraints { make in
             make.left.equalTo(image.snp.left)
             make.top.equalTo(image.snp.bottom).offset(10)
