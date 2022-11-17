@@ -31,7 +31,7 @@ extension CollectionModel {
             
             // People & Places
             [CollectionModel(title: "People", image: UIImage(systemName: "seal")),
-             CollectionModel(title: "Places", image: UIImage(systemName: "seal"))],
+             CollectionModel(title: "Places", image: UIImage(systemName: "key"))],
             
             // Media Types
             [CollectionModel(title: "Videos", icon: UIImage(systemName: "house")),
